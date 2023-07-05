@@ -2,10 +2,11 @@
 Connect-AzAccount
 
 # Parameters
-$ResourceGroup = "AZ104-Storage"
+$ResourceGroup = "AZ104-StorageAccounts"
 $Location = "WestEurope"
-$StorageAccountName = "az104storacc01072023"
+$StorageAccountName = "az104storageaccountdemo1"
 $SkuName = "Standard_LRS"
 
 # Create the Storage Account
-New-AzStorageAccount -Name $StorageAccountName -ResourceGroupName $ResourceGroup -Location $Location -SkuName $SkuName
+New-AzStorageAccount -Name $StorageAccountName -ResourceGroupName $ResourceGroup `
+-Location $Location -SkuName $SkuName -AllowBlobPublicAccess $False
