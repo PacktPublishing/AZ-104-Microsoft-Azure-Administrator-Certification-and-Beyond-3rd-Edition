@@ -2,8 +2,8 @@
 Connect-AzAccount
 
 # Parameters
-$ResourceGroup = "AZ104-Chapter6"
-$StorageAccountName = "az104chap6acc220072021"
+$ResourceGroup = "AZ104-StorageAccounts"
+$StorageAccountName = "az104storageaccountdemo1"
 $ShareName= "testfileshare"
 $Context = (Get-AzStorageAccount -ResourceGroupName $ResourceGroup -AccountName $StorageAccountName).Context;
 
