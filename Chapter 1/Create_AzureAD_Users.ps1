@@ -37,7 +37,7 @@ foreach ($UserName in $UserNames) {
     $UserPrincipalName = $FirstName.ToLower() + "." + $LastName.ToLower() + "@" + $DomainSuffix
 
     # Set up the default password for the users - this will be changed on first login
-    $Password = "Packt@AZ104"
+    $Password = "Password@AZ104"
     $Password = ConvertTo-SecureString -AsPlainText -Force $Password
 
     # Create the new user in Azure AD
