@@ -1,0 +1,26 @@
+{
+    "rules": [
+      {
+        "enabled": true,
+        "name": "move-to-cool",
+        "type": "Lifecycle",
+        "definition": {
+          "actions": {
+            "baseBlob": {
+              "tierToCool": {
+                "daysAfterModificationGreaterThan": 1
+              }
+            }
+          },
+          "filters": {
+            "blobTypes": [
+              "blockBlob"
+            ],
+            "prefixMatch": [
+              "files/log"
+            ]
+          }
+        }
+      }
+    ]
+  }
