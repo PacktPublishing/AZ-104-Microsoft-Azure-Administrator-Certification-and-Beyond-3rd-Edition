@@ -1,0 +1,39 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "resourceGroups": {
+            "type": "array",
+            "metadata": {
+                "description": "Name and location"
+            }
+        },
+        "resourceTags": {
+            "type": "object",
+            "metadata": {
+                "description": "Tags to be applied"
+            },
+            "defaultValue": {
+                "Function": "To learn how to edit a template"
+            }
+        }
+    },
+    "functions": [],
+    "variables": {},
+    "resources": [
+        {
+            "name": "[parameters('resourceGroups')[copyIndex('rgCopy')].name]",
+            "type": "Microsoft.Resources/resourceGroups",
+            "apiVersion": "2022-09-01",
+            "location": "[parameters('resourceGroups')[copyIndex('rgCopy')].location]",
+            "dependsOn": [],
+            "tags": "[parameters('resourceTags')]",
+            "copy": {
+                "name": "rgCopy",
+                "count": "[length(parameters('resourceGroups'))]"
+            }
+        }
+    ],
+    "outputs": {}
+}
+

@@ -1,0 +1,45 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+      "storageAccountName": {
+        "type": "string",
+        "metadata": {
+          "description": "Enter a unique storage account name."
+        }
+      },
+      "accountType": {
+        "type": "string",
+        "defaultValue": "Standard_LRS",
+        "allowedValues": [
+          "Standard_LRS",
+          "Standard_GRS",
+          "Standard_RAGRS",
+          "Standard_ZRS"
+        ],
+        "metadata": {
+          "description": "Select the storage account type."
+        }
+      }
+    },
+    "variables": {},
+    "resources": [
+      {
+        "type": "Microsoft.Storage/storageAccounts",
+        "apiVersion": "2021-04-01",
+        "name": "[parameters('storageAccountName')]",
+        "location": "[resourceGroup().location]",
+        "sku": {
+          "name": "[parameters('accountType')]"
+        },
+        "kind": "StorageV2"
+      }
+    ],
+    "outputs": {
+      "storageAccountConnectionString": {
+        "type": "string",
+        "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', parameters('storageAccountName'), ';AccountKey=', listKeys(resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName')), '2021-04-01').keys[0].value)]"
+      }
+    }
+  }
+  

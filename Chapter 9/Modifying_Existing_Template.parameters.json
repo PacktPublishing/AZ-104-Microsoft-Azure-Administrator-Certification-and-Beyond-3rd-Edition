@@ -1,0 +1,26 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "resourceGroups": {
+            "value": [
+                {
+                    "name": "ResourceGroupA",
+                    "location": "northeurope"
+                },
+                {
+                    "name": "ResourceGroupB",
+                    "location": "northeurope"
+                }
+            ]
+        },
+        "resourceTags": {
+            "value": {
+                "Environment": "Production",
+                "Managed By": "Azure Support L3",
+                "Function": "To learn how to edit a template"
+            }
+        }
+    }
+}
+
