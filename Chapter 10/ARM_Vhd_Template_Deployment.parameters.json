@@ -1,0 +1,36 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "adminUsername": {
+            "value": "administrator"
+        },
+        "adminPassword": {
+            "value": "MyPasswordIslong!"
+        },
+        "dnsLabelPrefix": {
+            "value": "az104-demo-server"
+        },
+        "publicIpName": {
+            "value": "myPublicIP"
+        },
+        "publicIPAllocationMethod": {
+            "value": "Dynamic"
+        },
+        "publicIpSku": {
+            "value": "Basic"
+        },
+        "OSVersion": {
+            "value": "2019-Datacenter"
+        },
+        "vmSize": {
+            "value": "Standard_D2_v3"
+        },
+        "location": {
+            "value": "northeurope"
+        },
+        "vmName": {
+            "value": "demo-server"
+        }
+    }
+}
