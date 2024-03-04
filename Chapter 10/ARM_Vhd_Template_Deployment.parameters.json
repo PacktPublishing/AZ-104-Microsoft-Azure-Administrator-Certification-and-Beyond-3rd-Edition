@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "adminUsername": {
-            "value": "administrator"
+            "value": "az104admin"
         },
         "adminPassword": {
             "value": "MyPasswordIslong!"
