@@ -8,7 +8,7 @@ $AppServicePlanName = "mylinuxappserviceplan10101"
 $SubscriptionId = "xxxxxxx"
 Select-AzSubscription -SubscriptionId $SubscriptionId
 
-# Create an App Service Plan for Linux
+# Retrieve the App Service Plan for Linux
 $AppServicePlan = Get-AzAppServicePlan -Name $AppServicePlanName -ResourceGroupName $ResourceGroup
 
 # Create an Autoscale Rule
