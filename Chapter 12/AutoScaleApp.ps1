@@ -9,16 +9,26 @@ $SubscriptionId = "xxxxxxx"
 Select-AzSubscription -SubscriptionId $SubscriptionId
 
 # Retrieve the App Service Plan for Linux
-$AppServicePlan = Get-AzAppServicePlan -Name $AppServicePlanName -ResourceGroupName $ResourceGroup
+$AppServicePlan = Get-AzAppServicePlan -Name $AppServicePlanName `
+-ResourceGroupName $ResourceGroup
 
 # Create an Autoscale Rule
-$AutoScaleRule = New-AzAutoscaleRule -MetricName "CpuPercentage" -Operator "GreaterThan" -MetricStatistic "Average" `
-                -Threshold 70 -TimeAggregationOperator "Average" -TimeGrain "00:01:00" -TimeWindow "00:10:00" `
-                -MetricResourceId $AppServicePlan.Id -ScaleActionCooldown 00:10:00 -ScaleActionDirection Increase `
-                -ScaleActionScaleType ChangeCount -ScaleActionValue 1
+$AutoScaleRule = New-AzAutoscaleScaleRuleObject -MetricTriggerMetricName "CpuPercentage" `
+                -MetricTriggerOperator "GreaterThan" -MetricTriggerStatistic "Average" `
+                -MetricTriggerThreshold 70 -MetricTriggerTimeAggregation "Average" `
+                -MetricTriggerTimeGrain "00:01:00" -MetricTriggerTimeWindow "00:10:00" `
+                -MetricTriggerMetricResourceUri $AppServicePlan.Id `
+                -ScaleActionCooldown 00:10:00 `
+                -ScaleActionDirection Increase `
+                -ScaleActionType ChangeCount `
+                -ScaleActionValue 1
 
 # Create an Autoscale Profile
-$AutoScaleProfile = New-AzAutoscaleProfile -Name "Default" -DefaultCapacity 1 -MaximumCapacity 2 -MinimumCapacity 1 -Rule $AutoScaleRule
+$AutoScaleProfile = New-AzAutoscaleProfileObject -Name "Default" `
+-CapacityDefault 1 -CapacityMaximum 2 -CapacityMinimum 1 `
+-Rule $AutoScaleRule
 
 # Assign the Autoscale Profile to the App
-Add-AzAutoscaleSetting -Location $Location -Name "Auto Scale Setting" -ResourceGroupName $ResourceGroup -TargetResourceId $AppservicePlan.Id -AutoscaleProfile $AutoScaleProfile
+New-AzAutoscaleSetting -Location $Location -Name "default" `
+-ResourceGroupName $ResourceGroup -TargetResourceUri $AppservicePlan.Id `
+-Profile $AutoScaleProfile -PropertiesName "default" -Enabled
