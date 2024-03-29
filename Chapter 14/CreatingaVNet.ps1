@@ -15,5 +15,15 @@ Select-AzSubscription -SubscriptionId $SubscriptionId
 New-AzResourceGroup -Name "$ResourceGroup" -Location "$Location"
 
 # Setup the VNET object
-New-AzVirtualNetwork -Name $VnetName -ResourceGroupName $ResourceGroup `
+$virtualNetwork = New-AzVirtualNetwork -Name $VnetName `
+-ResourceGroupName $ResourceGroup `
 -Location $Location -AddressPrefix $AddressPrefix
+
+# Create a Subnet
+$subnet = @{
+    Name = 'Demo_Subnet'
+    VirtualNetwork = $virtualNetwork
+    AddressPrefix = '10.0.0.0/24'
+}
+$subnetConfig = Add-AzVirtualNetworkSubnetConfig @subnet
+Set-AzVirtualNetwork -VirtualNetwork $virtualNetwork
