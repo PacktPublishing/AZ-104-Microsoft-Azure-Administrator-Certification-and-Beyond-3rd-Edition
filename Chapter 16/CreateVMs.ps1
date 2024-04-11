@@ -24,5 +24,5 @@ $adminCreds = New-Object PSCredential $adminUsername, ($adminPassword | ConvertT
 for ($vmNum=1; $vmNum -le 3; $vmNum++){
     if ($vmNum -eq 3){$vmName = "TestVM"} # Test VM
     else{$vmName = "BackendVM$vmNum"}
-    New-AzVm -ResourceGroupName "$ResourceGroup" -Name "$vmName" -Location "$Location" -VirtualNetworkName "$VirtualNetworkName" -SubnetName "$SubnetName" -SecurityGroupName "PacktNetworkSecurityGroup" -PublicIpAddressName "$($vmName)PublicIpAddress" -AvailabilitySetName "$AvailabilitySetName" -Credential $adminCreds -OpenPorts 3389 -Size "Standard_DS1_v2" -PublicIpSku Standard
+    New-AzVm -ResourceGroupName "$ResourceGroup" -Name "$vmName" -Location "$Location" -VirtualNetworkName "$VirtualNetworkName" -SubnetName "$SubnetName" -SecurityGroupName "ILBNetworkSecurityGroup" -PublicIpAddressName "$($vmName)PublicIpAddress" -AvailabilitySetName "$AvailabilitySetName" -Credential $adminCreds -OpenPorts 3389 -Size "Standard_DS1_v2" -PublicIpSku Standard
 }

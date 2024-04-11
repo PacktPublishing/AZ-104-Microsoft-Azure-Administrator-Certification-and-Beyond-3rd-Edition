@@ -1,0 +1,1 @@
+New-AzWebApp -name "azwebapp12341234" -ResourceGroupName "AZ104-ApplicationGateway" -Location "westeurope"
