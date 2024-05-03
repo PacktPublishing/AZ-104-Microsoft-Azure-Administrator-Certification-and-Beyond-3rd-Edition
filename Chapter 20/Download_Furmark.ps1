@@ -1,0 +1,1 @@
+Invoke-WebRequest -Uri "https://geeks3d.com/dl/get/749" -OutFile "C:\Downloads\Furmark.exe"

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AZ104 Web App</title>
+    
+</head>
+<style>
+    body {
+    background-image: linear-gradient(to bottom, #45a6f7, #64c9ff, #8cc5f4, #b2ebf1, #c9f0ff);
+    background-size: 200px 200vh; /* Larger gradient size */
+    background-repeat: repeat-x; /* Repeat the gradient horizontally only */
+    font-family: 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: #fff; /* White text */
+    font-size: 24px;
+  }
+  
+  span {
+    display: block;
+    position: absolute;
+    top: calc(50% - 0em);
+    left: calc(50% - 10em);
+    width: 20em;
+    height: 20em;
+  }
+  
+  span.spin {
+    animation: spin 10s linear infinite;
+  }
+  
+  span.spin-reverse {
+    animation: spin 30s linear infinite;
+  }
+  
+  span.pulse {
+    animation: spin-pulse 20s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: rotateZ(0);
+    }
+    100% {
+      transform: rotateZ(360deg);
+    }
+  }
+  
+  @keyframes spin-pulse {
+    0% {
+      transform: scale(1) rotateZ(0);
+    }
+    50% {
+      transform: scale(0.9) rotateZ(180deg);
+    }
+    100% {
+      transform: scale(1) rotateZ(360deg);
+    }
+  }
+  
+  .circle {
+    border-radius: 50%;
+    left: calc(50% - 6.25em);
+    top: calc(50% - 5em);
+    transform-origin: 50% 12.5em;
+  }
+  
+  .squircle {
+    border-radius: 25%;
+  }
+  
+  .circle, .squircle {
+    width: 12.5em;
+    height: 12.5em;
+    position: absolute;
+    border-top: 0.1em solid rgba(255, 255, 255, 0.4);
+  }
+  
+  .large.circle {
+    box-shadow: 0 1em 2em rgba(0, 0, 0, 0.5);
+  }
+  
+  .small {
+    width: 4em;
+    height: 4em;
+    left: calc(50% - 2em);
+    top: calc(50% - 7.5em);
+    transform-origin: 50% 15em;
+    box-shadow: 0 0.25em 0.5em rgba(0, 0, 0, 0.2);
+  }
+  
+  .one {
+    background: rgba(0, 123, 255, 0.65); /* Light blue */
+    transform: rotateZ(45deg);
+  }
+  
+  .two {
+    background: rgba(30, 144, 255, 0.65); /* Medium blue */
+  }
+  
+  .three {
+    background: rgba(51, 165, 255, 0.65); /* Dark blue */
+  }
+  
+  .four {
+    background: rgba(102, 204, 255, 0.65); /* Lighter blue */
+  }
+  
+  _five {
+    background: rgba(51, 165, 255, 0.65); /* Dark blue */
+  }
+  
+  .six {
+    background: rgba(30, 144, 255, 0.65); /* Medium blue */
+  }
+  
+  .seven {
+    background: rgba(0, 123, 255, 0.65); /* Light blue */
+  }
+  
+  .eight {
+    background: rgba(102, 204, 255, 0.65); /* Lighter blue */
+  }
+  
+  .large.squircle {
+    position: absolute;
+    background: rgba(51, 165, 255, 0.65); /* Dark blue */
+    border: none;
+    left: calc(50% - 7.5em);
+    top: calc(50% - 7.5em);
+    width: 15em;
+    height: 15em;
+    transform: none;
+  }
+  
+  .large.squircle.one {
+    transform: rotateZ(45deg);
+  }
+  
+  .content {
+    text-align: center;
+  
+    svg {
+      fill: #fff;
+      width: 3em;
+      margin: 1.25em auto 1em;
+    }
+  
+    h1 {
+      font-weight: lighter;
+      font-size: 1.75em;
+      margin: 0.25em auto 1em;
+      max-width: 6em;
+    }
+  }
+  
+  .message {
+    position: absolute;
+    left: 1em;
+    bottom: 1em;
+    right: 0;
+    color: #222;
+    text-align: left;
+  
+    a {
+      text-decoration: none;
+      font-weight: bold;
+      color: #999;
+    }
+  }
+</style>
+<body>
+    <article class="wwdc">
+        <!-- Large Circles -->
+        <div class="large circle one"></div>
+        <div class="large circle two"></div>
+        <div class="large circle three"></div>
+        <div class="large circle four"></div>
+        <div class="large circle five"></div>
+        <div class="large circle six"></div>
+        <div class="large circle seven"></div>
+        <div class="large circle eight">
+            
+        </div>
+
+        <!-- Small Shapes -->
+        <div class="small squircle one"><img src="AZ104Logo.png" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 3em; height: 3em;"></div>
+        <div class="small squircle two"></div>
+        <div class="small squircle three"></div>
+        <div class="small squircle four"></div>
+        <div class="small squircle five"></div>
+        <div class="small squircle six"></div>
+        <div class="small squircle seven"></div>
+        <div class="small squircle eight"><img src="AZ104Logo.png" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 3em; height: 3em;"></div>
+
+        <!-- Squircles -->
+        <span class="spin-reverse">
+            <div class="large squircle one"></div>
+        </span>
+
+        <!-- Text-->
+        <div class="center-text">
+            <h1>AZ104 Example Website</h1>
+        </div>
+    </article>
+    
+    <script src="script.js"></script>
+</body>
+</html>
