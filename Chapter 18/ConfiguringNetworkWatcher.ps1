@@ -33,5 +33,6 @@ for ($vmNum=1; $vmNum -le 2; $vmNum++)
     -PublicIpAddressName "NetworkWatcher$vmNum" `
     -Size "Standard_D2s_v5" `
     -OpenPorts 3389 `
+    -Image "Win2019Datacenter" `
     -Credential $adminCreds
 }
