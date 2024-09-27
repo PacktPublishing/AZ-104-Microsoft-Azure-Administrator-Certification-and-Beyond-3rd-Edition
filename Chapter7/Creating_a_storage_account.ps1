@@ -10,3 +10,5 @@ $SkuName = "Standard_LRS"
 # Create the Storage Account
 New-AzStorageAccount -Name $StorageAccountName -ResourceGroupName $ResourceGroup `
 -Location $Location -SkuName $SkuName -AllowBlobPublicAccess $False
+
+
